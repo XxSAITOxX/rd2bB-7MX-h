@@ -1,9 +1,9 @@
 # SuperResolution-ResNet
 ## 概要
-研究用リポジトリ
-PyTorchを用いた超解像ResNetを実装。
-目的は、分類モデルの事前学習された重みを超解像に用いることが可能か検証。
-分類モデルは[こちら](https://github.com/hirokatsukataoka16/FractalDB-Pretrained-ResNet-PyTorch/tree/main)のモデルと重みを使わせていただいております。
+研究用リポジトリ  
+PyTorchを用いた超解像ResNetを実装。  
+目的は、分類モデルの事前学習された重みを超解像に用いることが可能か検証。  
+分類モデルは[こちら](https://github.com/hirokatsukataoka16/FractalDB-Pretrained-ResNet-PyTorch/tree/main)のモデルと重みを使わせていただいております。  
 超解像モデルは上記の分類モデルをベースにSRResNetに似た構造を作成。
 ## アップデート
 - 2024.12.04 ページ作成
