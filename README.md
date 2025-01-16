@@ -16,6 +16,8 @@ PyTorchを用いたResNetを実装。
 ## 参考文献
 - resnet.py
   - [ここのresnet18.py](https://github.com/hirokatsukataoka16/FractalDB-Pretrained-ResNet-PyTorch/tree/main)
+    -  Kataoka Hirokatsu, et al."Pre-training without Natural Images" In ACCV2020.
+    -  Kataoka Hirokatsu, et al."Pre-training without Natural Images" In IJCV2022.
 - resnet18.py
   - resnet.py
   - [Pytorch Template 個人的ベストプラクティス](https://qiita.com/takubb/items/7d45ae701390912c7629)
