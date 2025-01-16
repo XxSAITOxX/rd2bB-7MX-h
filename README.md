@@ -14,3 +14,11 @@ PyTorchを用いたResNetを実装。
 - GPU：NVIDIA 2080 Super
 ## ファイルの説明
 ## 参考文献
+- resnet.py
+  - [ここのresnet18.py](https://github.com/hirokatsukataoka16/FractalDB-Pretrained-ResNet-PyTorch/tree/main)
+- resnet18.py
+  - resnet.py
+  - [Pytorch Template 個人的ベストプラクティス](https://qiita.com/takubb/items/7d45ae701390912c7629)
+- create_weight.py
+  - [重みの書き換え](https://qiita.com/mathlive/items/d9f31f8538e20a102e14)
+  - [nn.Parameter](https://pytorch.org/docs/stable/generated/torch.nn.parameter.Parameter.html)
