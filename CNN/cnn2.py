@@ -3,7 +3,34 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 
-#Train
+class Down2Up(nn.Module):
+
+    #初期化
+    def __init__(self, num_channels=3):
+        super(Down2Up, self).__init__()
+
+        self.conv1 = nn.Conv2d(num_channels, 64, kernel_size=9, padding=9//2,stride=2)
+        self.conv2 = nn.Conv2d(64, 128, kernel_size=9, padding=9//2,stride=2)
+        self.pixsh = nn.PixelShuffle(4)
+        self.conv3 = nn.Conv2d(8, num_channels, kernel_size=5, padding=5//2)
+        self.relu = nn.ReLU(inplace=True)
+        self.leakyRelu = nn.LeakyReLU(0.2, inplace=True)
+
+
+    #順伝播の処理
+    def forward(self, x):
+
+        out = self.relu(self.conv1(x))
+        out = self.relu(self.conv2(out))
+        out = self.leakyRelu(self.pixsh(out))
+        out = self.conv3(out)
+
+        return out
+
+def down2up():
+    model = Down2Up()
+    return model
+
 def train(model, train_loader, test_loader, device):
     #モデル
     model.train()
@@ -14,6 +41,7 @@ def train(model, train_loader, test_loader, device):
     #optimizer
     optimizer = optim.SGD(model.parameters(), lr=0.01)
 
+    #train
     for i_batch, sample_batched in enumerate(train_loader):
         print(i_batch)
         #GPUへ
@@ -41,3 +69,20 @@ def train(model, train_loader, test_loader, device):
             loss = criterion(output, label)
             test_batch_loss.append(loss.item())
     return model, np.mean(train_batch_loss), np.mean(test_batch_loss)
+
+def inference(model, dataloader, device):
+    model.eval()
+    preds = []
+    labels = []
+
+    with torch.no_grad():
+        for i_batch, sample_batched in enumerate(dataloader):
+            #GPUへ
+            data, label = sample_batched["image"].to(device), sample_batched["label"].to(device)
+            #推論
+            output = model(data)
+            #Collect data
+            preds.append(output)
+            labels.append(label)
+
+    return preds, labels

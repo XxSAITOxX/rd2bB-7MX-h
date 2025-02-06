@@ -10,6 +10,7 @@ def inference(model, dataloader, device):
 
     with torch.no_grad():
         for i_batch, sample_batched in enumerate(dataloader):
+            print(i_batch)
             #GPUへ
             data, label = sample_batched["image"].to(device), sample_batched["label"].to(device)
             #推論

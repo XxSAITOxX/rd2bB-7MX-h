@@ -35,6 +35,9 @@ list_and = list(set(keys1) & set(keys2))
 #print(model1.layer1[0].conv1.weight)
 #model1.layer1 = model1.layer1.replace(model2.layer2)
 #print(model1.layer1)
+i = "weight"
+model.layer.i
+model.layer.weight
 
 ll = []
 with open('./list.txt') as f:
